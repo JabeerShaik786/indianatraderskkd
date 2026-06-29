@@ -19,7 +19,7 @@ categories.forEach((category) => {
           .trim();
 
         items.push({
-          src: `/gallary/${category}/${file}`,
+          src: `/indianatraderskkd/gallary/${category}/${file}`,
           alt: `${category} - ${cleanTitle}`,
           title: cleanTitle,
           category: category,

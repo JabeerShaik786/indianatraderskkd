@@ -1,5 +1,14 @@
 import { Phone, Instagram, Facebook, Youtube } from 'lucide-react';
 
+
+const getAssetPath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const basePath = '/indianatraderskkd';
+  if (path.startsWith(basePath)) return path;
+  return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
+};
+
 export default function Footer() {
   return (
     <footer className="bg-[#012A4A] text-white pt-20 pb-10 border-t border-white/5 w-full">
@@ -81,7 +90,7 @@ export default function Footer() {
             <span className="opacity-100">© {new Date().getFullYear()} Indiana Traders. All Rights Reserved.</span>
             <div className="flex items-center gap-2 justify-center sm:justify-start opacity-100">
               <img
-                src="/images/jk-logo.png"
+                src={getAssetPath("/images/jk-logo.png")}
                 alt="JK & Co."
                 className="w-5 h-5 rounded-full object-contain shrink-0"
                 loading="lazy"

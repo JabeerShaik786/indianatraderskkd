@@ -1,5 +1,14 @@
 'use client';
 
+const getAssetPath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const basePath = '/indianatraderskkd';
+  if (path.startsWith(basePath)) return path;
+  return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
+};
+
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import initialGalleryItems from './gallery-data.json';
@@ -72,32 +81,32 @@ export default function Home() {
     {
       title: 'Container Homes',
       desc: 'Luxurious, eco-friendly living spaces designed with modern architectural aesthetics and premium thermal insulation.',
-      image: '/images/container_home.png',
+      image: '/images/container-home.png',
     },
     {
       title: 'Modular Offices',
       desc: 'Sleek, high-productivity workspaces engineered with clean electrical conduits and modern corporate aesthetics.',
-      image: '/images/modular_office.png',
+      image: '/images/modular-office.png',
     },
     {
       title: 'Site Offices',
       desc: 'Durable, weather-proof, and easily transportable cabins tailored for site managers and remote operations.',
-      image: '/images/site_office.png',
+      image: '/images/site-office.png',
     },
     {
       title: 'Storage Containers',
       desc: 'High-security, heavy-duty COR-TEN steel storage units designed to endure harsh coastal environments.',
-      image: '/images/storage_container.png',
+      image: '/images/storage-container.png',
     },
     {
       title: 'Container Cafés',
       desc: 'Chic, customizable retail storefronts with hydraulic service bays and premium exterior wood paneling.',
-      image: '/images/container_cafe.png',
+      image: '/images/container-cafe.png',
     },
     {
       title: 'Custom Structures',
       desc: 'Bespoke design-build architectural solutions tailored to unique shapes, decks, and structural needs.',
-      image: '/images/custom_structure.png',
+      image: '/images/custom-structure.png',
     },
   ];
 
@@ -109,7 +118,7 @@ export default function Home() {
       type: 'Container Office',
       time: '4 Weeks',
       structure: 'Premium ISO Container Steel',
-      image: '/images/project_office.jpg',
+      image: '/images/project-office.jpg',
       desc: 'A premium custom-built container office featuring modern architecture, spacious interiors, panoramic glass windows, and a professional workspace designed for businesses and site operations.',
     },
     {
@@ -118,7 +127,7 @@ export default function Home() {
       type: 'Container School',
       time: '8 Weeks',
       structure: 'Premium ISO Container Steel',
-      image: '/images/project_school.jpg',
+      image: '/images/project-school.jpg',
       desc: 'A modular container school designed to provide safe, durable, and functional learning spaces with modern classrooms, excellent ventilation, and fast construction.',
     },
     {
@@ -127,7 +136,7 @@ export default function Home() {
       type: 'Container Guest House',
       time: '12 Weeks',
       structure: 'Premium ISO Container Steel',
-      image: '/images/project_guesthouse.jpg',
+      image: '/images/project-guesthouse.jpg',
       desc: 'A premium multi-level container guest house designed for comfortable stays, offering spacious balconies, scenic views, modern interiors, and durable steel construction.',
     },
     {
@@ -136,7 +145,7 @@ export default function Home() {
       type: 'Container Café',
       time: '6 Weeks',
       structure: 'Premium ISO Container Steel',
-      image: '/images/project_cafe.jpg',
+      image: '/images/project-cafe.jpg',
       desc: 'A stylish container café featuring contemporary architecture, inviting outdoor seating, premium interiors, and a welcoming atmosphere for customers.',
     },
   ];
@@ -196,7 +205,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <div className="relative w-full h-full">
             <motion.img
-              src="/images/hero_sunset_hill.jpg"
+              src={getAssetPath("/images/hero-sunset-hill.jpg")}
               alt="Premium Container House by Indiana Traders"
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -308,7 +317,7 @@ export default function Home() {
               >
                 <div className="overflow-hidden rounded-[16px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_35px_rgba(0,0,0,0.12)]">
                   <img
-                    src="/images/about_container_home.png"
+                    src={getAssetPath("/images/about-container-home.png")}
                     alt="Premium Container Solution Home"
                     className="w-full h-[450px] object-cover"
                   />
@@ -397,7 +406,7 @@ export default function Home() {
                 <div>
                   <div className="relative h-60 overflow-hidden rounded-t-[12px] bg-gray-100">
                     <motion.img
-                      src={service.image}
+                      src={getAssetPath(service.image)}
                       alt={service.title}
                       initial="hidden"
                       whileInView="visible"
@@ -460,7 +469,7 @@ export default function Home() {
                 }`}>
                   <div className="overflow-hidden relative group">
                     <motion.img
-                      src={project.image}
+                      src={getAssetPath(project.image)}
                       alt={project.name}
                       initial="hidden"
                       whileInView="visible"
@@ -567,7 +576,7 @@ export default function Home() {
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/images/profile_avatar.jpg"
+                      src={getAssetPath("/images/profile-avatar.jpg")}
                       alt="Indiana Traders"
                       className="w-12 h-12 rounded-full object-cover shrink-0 border border-[#F2F4F7]"
                     />
@@ -580,7 +589,7 @@ export default function Home() {
                 </div>
                 {/* Simulated Thumbnail */}
                 <div className="relative h-48 bg-[#F9FAFB] overflow-hidden rounded-[16px] mb-6">
-                  <img src="/images/sdc_news_thumbnail.png" alt="YT thumbnail" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                  <img src={getAssetPath("/images/sdc-news-thumbnail.png")} alt="YT thumbnail" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full bg-[#FAFAFA]/95 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-250">
                       <div className="w-0 h-0 border-t-8 border-t-transparent border-l-[14px] border-l-[#012A4A] border-b-8 border-b-transparent ml-1" />
@@ -624,7 +633,7 @@ export default function Home() {
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/images/profile_avatar.jpg"
+                      src={getAssetPath("/images/profile-avatar.jpg")}
                       alt="Indiana Traders"
                       className="w-12 h-12 rounded-full object-cover shrink-0 border border-[#F2F4F7]"
                     />
@@ -637,7 +646,7 @@ export default function Home() {
                 </div>
                 {/* Simulated Thumbnail */}
                 <div className="relative h-48 bg-[#F9FAFB] overflow-hidden rounded-[16px] mb-6">
-                  <img src="/images/instagram_reel_thumbnail.png" alt="IG post" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                  <img src={getAssetPath("/images/instagram-reel-thumbnail.png")} alt="IG post" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
                 </div>
               </a>
               <div className="flex w-full gap-3 mt-auto">
@@ -675,7 +684,7 @@ export default function Home() {
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <img
-                      src="/images/profile_avatar.jpg"
+                      src={getAssetPath("/images/profile-avatar.jpg")}
                       alt="Indiana Traders"
                       className="w-12 h-12 rounded-full object-cover shrink-0 border border-[#F2F4F7]"
                     />
@@ -688,7 +697,7 @@ export default function Home() {
                 </div>
                 {/* Simulated Thumbnail */}
                 <div className="relative h-48 bg-[#F9FAFB] overflow-hidden rounded-[16px] mb-6">
-                  <img src="/images/facebook_thumbnail.jpg" alt="FB post" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                  <img src={getAssetPath("/images/facebook-thumbnail.jpg")} alt="FB post" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
                 </div>
               </a>
               <div className="flex w-full gap-3 mt-auto">
