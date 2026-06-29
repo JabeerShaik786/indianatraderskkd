@@ -141,19 +141,8 @@ export default function Home() {
     },
   ];
 
-  // Gallery items state (dynamically loaded with compile-time fallback)
-  const [galleryItems, setGalleryItems] = useState(initialGalleryItems);
-
-  useEffect(() => {
-    fetch('/api/gallery')
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setGalleryItems(data);
-        }
-      })
-      .catch((err) => console.error('Error fetching gallery:', err));
-  }, []);
+  // Gallery items state (loaded statically at compile-time)
+  const [galleryItems] = useState(initialGalleryItems);
 
   const filteredGallery = selectedCategory === 'All'
     ? galleryItems
