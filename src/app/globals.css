@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
+@theme {
+  --font-headings: "Futura PT", Futura, var(--font-jost), sans-serif;
+  --font-body: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+  --color-luxury-bg: #FFFFFF;
+  --color-luxury-card: #FFFFFF;
+  --color-luxury-text-primary: #012A4A;
+  --color-luxury-text-secondary: #4B5563;
+  --color-luxury-accent: #01497C;
+  --color-luxury-border: rgba(1, 42, 74, 0.08);
+  --color-luxury-success: #22C55E;
+
+  --color-brand-primary-dark: #012A4A;
+  --color-brand-secondary-dark: #013A63;
+  --color-brand-primary-blue: #01497C;
+  --color-brand-deep-blue: #014F86;
+  --color-brand-accent-blue: #2A6F97;
+  --color-brand-medium-blue: #2C7DA0;
+  --color-brand-soft-blue: #468FAF;
+  --color-brand-light-blue: #61A5C2;
+  --color-brand-very-light-blue: #89C2D9;
+  --color-brand-bg-accent: #A9D6E5;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #012A4A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
 }
+
+.font-headings {
+  font-family: var(--font-headings);
+}
+
+p, li, .body-text {
+  color: #4B5563;
+  line-height: 1.7;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(1, 42, 74, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(1, 42, 74, 0.3);
+}
+
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(-25%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.animate-marquee-ltr {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 22s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .animate-marquee-ltr {
+  animation-play-state: paused;
+}
+
