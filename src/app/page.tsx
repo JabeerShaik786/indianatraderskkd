@@ -223,12 +223,12 @@ export default function Home() {
         </div>
 
         <div className="w-full pl-[8%] md:pl-[8%] lg:pl-[10%] pr-6 relative z-10">
-          <div className="max-w-2xl flex flex-col space-y-8">
+          <div className="max-w-2xl flex flex-col space-y-0 md:space-y-8 mx-auto md:mx-0">
             <motion.h1
               initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-              className="font-headings text-5xl sm:text-6xl lg:text-[4.5rem] font-medium text-white leading-[1.05] tracking-normal max-w-[800px] [text-shadow:0_2px_8px_rgba(0,0,0,0.15)]"
+              className="font-headings text-5xl sm:text-6xl lg:text-[4.5rem] font-medium text-white leading-[1.05] tracking-normal max-w-[800px] [text-shadow:0_2px_8px_rgba(0,0,0,0.15)] text-center md:text-left mx-auto md:mx-0 w-full mb-[50px] md:mb-0"
             >
               Modern Container Solutions <br />
               Built to Last.
