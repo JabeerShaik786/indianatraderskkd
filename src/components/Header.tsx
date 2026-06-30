@@ -1,11 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +21,16 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = pathname === '/';
+  const prefix = isHomePage ? '' : '/indianatraderskkd';
+
   const navLinks = [
-    { name: 'About', href: '/#about' },
-    { name: 'Services', href: '/#services' },
-    { name: 'Projects', href: '/#projects' },
-    { name: 'Gallery', href: '/#gallery' },
-    { name: 'Connect', href: '/#connect' },
-    { name: 'Testimonials', href: '/#testimonials' },
+    { name: 'About', href: `${prefix}#about` },
+    { name: 'Services', href: `${prefix}#services` },
+    { name: 'Projects', href: `${prefix}#projects` },
+    { name: 'Gallery', href: `${prefix}#gallery` },
+    { name: 'Connect', href: `${prefix}#connect` },
+    { name: 'Testimonials', href: `${prefix}#testimonials` },
   ];
 
   const isWhiteHeader = isScrolled || isMobileMenuOpen;
@@ -40,7 +45,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
         {/* Brand Logo */}
-        <a href="#hero" className="flex flex-col group">
+        <a href={isHomePage ? '#hero' : '/indianatraderskkd'} className="flex flex-col group">
           <span className={`font-headings text-2xl font-bold tracking-wider transition-colors duration-300 ${
             isWhiteHeader ? 'text-[#012A4A] group-hover:text-[#2A6F97]' : 'text-white group-hover:text-white/80'
           }`}>
