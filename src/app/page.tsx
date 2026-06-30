@@ -193,6 +193,30 @@ export default function Home() {
       role: 'Founder, Brews & Co.',
       location: 'Rajahmundry',
     },
+    {
+      quote: "Indiana Traders designed and delivered our modular office exactly as promised. The quality of workmanship, timely installation, and professional support exceeded our expectations.",
+      name: 'Ravi Kumar',
+      role: 'Business Owner',
+      location: 'AP',
+    },
+    {
+      quote: "We ordered portable site cabins for our construction project, and the entire process was smooth from manufacturing to delivery. Highly recommended for quality container solutions.",
+      name: 'Mahesh Reddy',
+      role: 'Project Manager',
+      location: 'AP',
+    },
+    {
+      quote: "Our customized container washroom project was completed on schedule with excellent finishing and durable materials. Very satisfied with the overall service.",
+      name: 'Lakshmi Devi',
+      role: 'Homeowner',
+      location: 'AP',
+    },
+    {
+      quote: "Excellent engineering team and transparent pricing. Indiana Traders transformed our idea into a beautiful modular workspace with outstanding attention to detail.",
+      name: 'Srinivas Rao',
+      role: 'Client',
+      location: 'AP',
+    },
   ];
 
   return (
