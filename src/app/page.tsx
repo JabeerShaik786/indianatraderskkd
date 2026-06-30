@@ -49,11 +49,11 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       setFadeOut(true);
     }, 1500);
 
-    // Complete loading after the fade animation completes (1500ms + 600ms = 2100ms)
+    // Complete loading after the fade animation completes (1500ms + 500ms = 2000ms)
     const completeTimer = setTimeout(() => {
       document.body.style.overflow = '';
       onComplete();
-    }, 2100);
+    }, 2000);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -66,29 +66,47 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
     <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: fadeOut ? 0 : 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[99999] bg-[#FFFFFF] flex items-center justify-center pointer-events-auto"
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[99999] bg-[#082B4A] flex flex-col items-center justify-center pointer-events-auto"
     >
-      <motion.img
-        src={getAssetPath("/images/logo.png")}
-        alt="Indiana Traders Logo"
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ 
-          opacity: fadeOut ? 0 : 1, 
-          scale: fadeOut ? 0.98 : 1,
-          filter: [
-            'drop-shadow(0 0 0px rgba(212,175,55,0))',
-            'drop-shadow(0 0 6px rgba(212,175,55,0.15))',
-            'drop-shadow(0 0 0px rgba(212,175,55,0))'
-          ]
-        }}
-        transition={{
-          opacity: { duration: 0.8, ease: 'easeOut' },
-          scale: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
-          filter: { repeat: Infinity, duration: 2.0, ease: 'easeInOut' }
-        }}
-        className="w-20 h-20 object-contain"
-      />
+      <div className="flex flex-col items-center justify-center">
+        {/* Animated Gold Logo */}
+        <motion.img
+          src={getAssetPath("/images/logo.png")}
+          alt="Indiana Traders Logo"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ 
+            opacity: fadeOut ? 0 : 1, 
+            scale: fadeOut ? 0.98 : 1,
+            filter: [
+              'drop-shadow(0 0 0px rgba(212,175,55,0))',
+              'drop-shadow(0 0 10px rgba(212,175,55,0.3))',
+              'drop-shadow(0 0 0px rgba(212,175,55,0))'
+            ]
+          }}
+          transition={{
+            opacity: { duration: 0.8, ease: 'easeOut' },
+            scale: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
+            filter: { repeat: Infinity, duration: 2.0, ease: 'easeInOut' }
+          }}
+          className="w-20 h-20 object-contain"
+        />
+
+        {/* Brand Text container */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: fadeOut ? 0 : 1, y: fadeOut ? -5 : 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+          className="flex flex-col items-center text-center mt-5"
+        >
+          <h1 className="font-headings text-[22px] lg:text-[28px] font-bold text-white tracking-[2px] leading-none uppercase">
+            INDIANA TRADERS
+          </h1>
+          <p className="text-[12px] font-normal text-white/75 tracking-[5px] leading-none mt-2.5 uppercase">
+            CONTAINER SOLUTIONS
+          </p>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }
