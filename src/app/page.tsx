@@ -200,7 +200,7 @@ export default function Home() {
       <Header />
 
       {/* 1. HERO SECTION */}
-      <section id="hero" className="relative h-screen flex items-center pt-20 overflow-hidden bg-[#012A4A]">
+      <section id="hero" className="relative h-screen flex items-end md:items-center pt-20 pb-[90px] md:pb-0 overflow-hidden bg-[#012A4A]">
         {/* Hero Background Image - full screen background covering the entire hero */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <div className="relative w-full h-full">
@@ -210,7 +210,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-bottom md:object-center"
             />
             {/* Soft left-to-right gradient overlay to improve text readability */}
             <div
