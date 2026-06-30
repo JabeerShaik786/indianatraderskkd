@@ -38,29 +38,63 @@ import ConsultationForm from '@/components/ConsultationForm';
 import CountUp from '@/components/CountUp';
 import Footer from '@/components/Footer';
 
-export default function Home() {
-  const [loading, setLoading] = useState(true);
+function LoadingScreen({ onComplete }: { onComplete: () => void }) {
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const hasLoaded = sessionStorage.getItem('hasLoaded');
-    if (hasLoaded) {
-      setLoading(false);
-      return;
-    }
-    
     document.body.style.overflow = 'hidden';
-    
-    const timer = setTimeout(() => {
-      setLoading(false);
-      sessionStorage.setItem('hasLoaded', 'true');
-      document.body.style.overflow = '';
+
+    // Start fading out after 1.5 seconds (1500ms)
+    const fadeTimer = setTimeout(() => {
+      setFadeOut(true);
     }, 1500);
-    
+
+    // Complete loading after the fade animation completes (1500ms + 600ms = 2100ms)
+    const completeTimer = setTimeout(() => {
+      document.body.style.overflow = '';
+      onComplete();
+    }, 2100);
+
     return () => {
-      clearTimeout(timer);
+      clearTimeout(fadeTimer);
+      clearTimeout(completeTimer);
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [onComplete]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: fadeOut ? 0 : 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[99999] bg-[#FFFFFF] flex items-center justify-center pointer-events-auto"
+    >
+      <motion.img
+        src={getAssetPath("/images/logo.png")}
+        alt="Indiana Traders Logo"
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ 
+          opacity: fadeOut ? 0 : 1, 
+          scale: fadeOut ? 0.98 : 1,
+          filter: [
+            'drop-shadow(0 0 0px rgba(212,175,55,0))',
+            'drop-shadow(0 0 6px rgba(212,175,55,0.15))',
+            'drop-shadow(0 0 0px rgba(212,175,55,0))'
+          ]
+        }}
+        transition={{
+          opacity: { duration: 0.8, ease: 'easeOut' },
+          scale: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
+          filter: { repeat: Infinity, duration: 2.0, ease: 'easeInOut' }
+        }}
+        className="w-20 h-20 object-contain"
+      />
+    </motion.div>
+  );
+}
+
+export default function Home() {
+  const [loading, setLoading] = useState(true);
 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -242,40 +276,12 @@ export default function Home() {
     },
   ];
 
+  if (loading) {
+    return <LoadingScreen onComplete={() => setLoading(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-white text-[#012A4A] flex flex-col font-sans antialiased selection:bg-[#01497C]/25 selection:text-[#012A4A]">
-      <AnimatePresence>
-        {loading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[9999] bg-[#000000] flex items-center justify-center pointer-events-auto"
-          >
-            <motion.img
-              src={getAssetPath("/images/logo.png")}
-              alt="Indiana Traders Logo"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                filter: [
-                  'drop-shadow(0 0 0px rgba(255,255,255,0))',
-                  'drop-shadow(0 0 8px rgba(212,175,55,0.2))',
-                  'drop-shadow(0 0 0px rgba(255,255,255,0))'
-                ]
-              }}
-              transition={{
-                opacity: { duration: 0.8, ease: 'easeOut' },
-                scale: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
-                filter: { repeat: Infinity, duration: 2.0, ease: 'easeInOut' }
-              }}
-              className="w-[75px] md:w-[85px] lg:w-[100px] h-auto object-contain"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <Header />
 
       {/* 1. HERO SECTION */}
