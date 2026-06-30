@@ -38,30 +38,7 @@ import ConsultationForm from '@/components/ConsultationForm';
 import CountUp from '@/components/CountUp';
 import Footer from '@/components/Footer';
 
-function LoadingScreen({ onComplete }: { onComplete: () => void }) {
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
-    // Start fading out after 1.5 seconds (1500ms)
-    const fadeTimer = setTimeout(() => {
-      setFadeOut(true);
-    }, 1500);
-
-    // Complete loading after the fade animation completes (1500ms + 500ms = 2000ms)
-    const completeTimer = setTimeout(() => {
-      document.body.style.overflow = '';
-      onComplete();
-    }, 2000);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(completeTimer);
-      document.body.style.overflow = '';
-    };
-  }, [onComplete]);
-
+function LoadingScreen({ fadeOut }: { fadeOut: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 1 }}
@@ -113,6 +90,79 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
+
+  useEffect(() => {
+    // 1. Minimum display time (1.5 seconds)
+    const timer = setTimeout(() => {
+      setMinTimeElapsed(true);
+    }, 1500);
+
+    // 2. Load detection
+    let pageDone = false;
+    let heroDone = false;
+
+    const checkComplete = () => {
+      if (pageDone && heroDone) {
+        setAssetsLoaded(true);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      pageDone = true;
+      checkComplete();
+    } else {
+      const handleLoad = () => {
+        pageDone = true;
+        checkComplete();
+      };
+      window.addEventListener('load', handleLoad);
+    }
+
+    const img = new Image();
+    img.src = getAssetPath("/images/hero-sunset-hill.jpg");
+    if (img.complete) {
+      heroDone = true;
+      checkComplete();
+    } else {
+      img.onload = () => {
+        heroDone = true;
+        checkComplete();
+      };
+      img.onerror = () => {
+        heroDone = true;
+        checkComplete();
+      };
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('load', checkComplete);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (minTimeElapsed && assetsLoaded) {
+      setFadeOut(true);
+      const completeTimer = setTimeout(() => {
+        setLoading(false);
+      }, 500);
+      return () => clearTimeout(completeTimer);
+    }
+  }, [minTimeElapsed, assetsLoaded]);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [loading]);
 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -294,13 +344,18 @@ export default function Home() {
     },
   ];
 
-  if (loading) {
-    return <LoadingScreen onComplete={() => setLoading(false)} />;
-  }
-
   return (
-    <div className="min-h-screen bg-white text-[#012A4A] flex flex-col font-sans antialiased selection:bg-[#01497C]/25 selection:text-[#012A4A]">
-      <Header />
+    <>
+      {loading && <LoadingScreen fadeOut={fadeOut} />}
+      <div 
+        style={{ 
+          opacity: fadeOut ? 1 : 0,
+          visibility: fadeOut ? 'visible' : 'hidden',
+          transition: 'opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), visibility 500ms cubic-bezier(0.16, 1, 0.3, 1)'
+        }}
+        className="min-h-screen bg-white text-[#012A4A] flex flex-col font-sans antialiased selection:bg-[#01497C]/25 selection:text-[#012A4A]"
+      >
+        <Header />
 
       {/* 1. HERO SECTION */}
       <section id="hero" className="relative h-screen flex items-end md:items-center pt-20 pb-[90px] md:pb-0 overflow-hidden bg-[#012A4A]">
@@ -1124,6 +1179,7 @@ export default function Home() {
         onPrev={handlePrevImage}
         onNext={handleNextImage}
       />
-    </div>
+      </div>
+    </>
   );
 }

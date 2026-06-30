@@ -25,16 +25,17 @@
 }
 
 :root {
-  --background: #FFFFFF;
+  --background: #082B4A;
   --foreground: #012A4A;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #082B4A;
 }
 
 body {
-  background-color: var(--background);
+  background-color: #082B4A;
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
