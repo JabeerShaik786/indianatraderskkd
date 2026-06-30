@@ -2,4 +2,4 @@
 2:I[39756,["/indianatraderskkd/_next/static/chunks/3wpbqol5ye05v.js","/indianatraderskkd/_next/static/chunks/158myu8e_yme3.js"],"default"]
 3:I[37457,["/indianatraderskkd/_next/static/chunks/3wpbqol5ye05v.js","/indianatraderskkd/_next/static/chunks/158myu8e_yme3.js"],"default"]
 4:[]
-0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"Yy9f5OlIe9g7KVYSD8fTw"}
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W4","buildId":"koe4R4GOyBLl4bnpHyu9u"}
