@@ -18,8 +18,12 @@ categories.forEach((category) => {
           .replace(/\s+/g, ' ')
           .trim();
 
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined 
+          ? process.env.NEXT_PUBLIC_BASE_PATH 
+          : '/indianatraderskkd';
+
         items.push({
-          src: `/indianatraderskkd/gallary/${category}/${file}`,
+          src: `${basePath}/gallary/${category}/${file}`,
           alt: `${category} - ${cleanTitle}`,
           title: cleanTitle,
           category: category,

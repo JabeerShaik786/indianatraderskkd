@@ -23,6 +23,10 @@ const jost = Jost({
   display: "swap",
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined 
+  ? process.env.NEXT_PUBLIC_BASE_PATH 
+  : '/indianatraderskkd';
+
 export const metadata: Metadata = {
   title: "Indiana Traders | Premium Container Homes & Modular Solutions",
   description: "Leading designer and builder of luxury container homes, modular offices, portable site cabins, and bespoke container structures based in Kakinada, Andhra Pradesh.",
@@ -38,14 +42,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Indiana Traders" }],
   icons: {
     icon: [
-      { url: '/indianatraderskkd/favicon.ico' },
-      { url: '/indianatraderskkd/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/indianatraderskkd/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/indianatraderskkd/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
-      { url: '/indianatraderskkd/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+      { url: `${basePath}/favicon.ico` },
+      { url: `${basePath}/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
+      { url: `${basePath}/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
+      { url: `${basePath}/favicon-48x48.png`, sizes: '48x48', type: 'image/png' },
+      { url: `${basePath}/icon-512x512.png`, sizes: '512x512', type: 'image/png' },
     ],
     apple: [
-      { url: '/indianatraderskkd/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: `${basePath}/apple-touch-icon.png`, sizes: '180x180', type: 'image/png' },
     ],
   },
   openGraph: {

@@ -4,8 +4,10 @@ import { Phone, Instagram, Facebook, Youtube } from 'lucide-react';
 const getAssetPath = (path: string) => {
   if (!path) return '';
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  const basePath = '/indianatraderskkd';
-  if (path.startsWith(basePath)) return path;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined 
+    ? process.env.NEXT_PUBLIC_BASE_PATH 
+    : '/indianatraderskkd';
+  if (basePath && path.startsWith(basePath)) return path;
   return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
 };
 

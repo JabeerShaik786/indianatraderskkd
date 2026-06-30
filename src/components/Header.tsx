@@ -22,7 +22,10 @@ export default function Header() {
   }, []);
 
   const isHomePage = pathname === '/';
-  const prefix = isHomePage ? '' : '/indianatraderskkd';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined 
+    ? process.env.NEXT_PUBLIC_BASE_PATH 
+    : '/indianatraderskkd';
+  const prefix = isHomePage ? '' : basePath;
 
   const navLinks = [
     { name: 'About', href: `${prefix}#about` },
@@ -45,7 +48,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
         {/* Brand Logo */}
-        <a href={isHomePage ? '#hero' : '/indianatraderskkd'} className="flex flex-col group">
+        <a href={isHomePage ? '#hero' : (basePath === '' ? '/' : basePath)} className="flex flex-col group">
           <span className={`font-headings text-2xl font-bold tracking-wider transition-colors duration-300 ${
             isWhiteHeader ? 'text-[#012A4A] group-hover:text-[#2A6F97]' : 'text-white group-hover:text-white/80'
           }`}>
