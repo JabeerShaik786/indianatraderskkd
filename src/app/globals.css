@@ -85,3 +85,8 @@ p, li, .body-text {
   animation-play-state: paused;
 }
 
+@media (max-width: 767px) {
+  h1.mobile-haas-font {
+    font-family: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  }
+}
