@@ -1,2 +1,2 @@
-:HL["/indianatraderskkd/_next/static/chunks/0dsx8nafm264x.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"gpPCB1X3HiFGvTkwiPkdH"}
+:HL["/indianatraderskkd/_next/static/chunks/1v4_howp9mbeo.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"C3Q19ViewVUV0YHS0Yiar"}
