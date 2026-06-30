@@ -228,7 +228,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-              className="font-headings text-5xl sm:text-6xl lg:text-[4.5rem] font-medium text-white leading-[1.05] tracking-normal max-w-[800px] [text-shadow:0_2px_8px_rgba(0,0,0,0.15)] text-center md:text-left mx-auto md:mx-0 w-full mb-[50px] md:mb-0"
+              className="font-headings text-5xl sm:text-6xl lg:text-[4.5rem] font-medium text-white leading-[1.05] tracking-normal max-w-[800px] [text-shadow:0_2px_8px_rgba(0,0,0,0.15)] text-center md:text-left mx-auto md:mx-0 w-full mb-[180px] md:mb-0"
             >
               Modern Container Solutions <br />
               Built to Last.
