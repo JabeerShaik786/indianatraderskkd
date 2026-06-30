@@ -475,7 +475,7 @@ export default function Home() {
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={imageReveal}
-                      className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      className="w-full h-auto lg:h-[400px] object-contain lg:object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
                 </div>
