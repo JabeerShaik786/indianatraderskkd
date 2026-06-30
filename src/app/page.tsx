@@ -74,12 +74,12 @@ function LoadingScreen({ fadeOut }: { fadeOut: boolean }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: fadeOut ? 0 : 1, y: fadeOut ? -5 : 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-          className="flex flex-col items-center text-center mt-5"
+          className="flex flex-col items-center text-center mt-3.5"
         >
           <h1 className="font-headings text-[22px] lg:text-[28px] font-bold text-white tracking-[2px] leading-none uppercase">
             INDIANA TRADERS
           </h1>
-          <p className="text-[12px] font-normal text-white/75 tracking-[5px] leading-none mt-2.5 uppercase">
+          <p className="text-[12px] font-normal text-white/75 tracking-[5px] leading-none mt-2 uppercase">
             CONTAINER SOLUTIONS
           </p>
         </motion.div>
