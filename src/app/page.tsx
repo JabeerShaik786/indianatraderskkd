@@ -10,7 +10,7 @@ const getAssetPath = (path: string) => {
 
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import initialGalleryItems from './gallery-data.json';
 import {
   Shield,
@@ -39,6 +39,29 @@ import CountUp from '@/components/CountUp';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const hasLoaded = sessionStorage.getItem('hasLoaded');
+    if (hasLoaded) {
+      setLoading(false);
+      return;
+    }
+    
+    document.body.style.overflow = 'hidden';
+    
+    const timer = setTimeout(() => {
+      setLoading(false);
+      sessionStorage.setItem('hasLoaded', 'true');
+      document.body.style.overflow = '';
+    }, 1500);
+    
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -221,6 +244,38 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-[#012A4A] flex flex-col font-sans antialiased selection:bg-[#01497C]/25 selection:text-[#012A4A]">
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[9999] bg-[#000000] flex items-center justify-center pointer-events-auto"
+          >
+            <motion.img
+              src={getAssetPath("/images/logo.png")}
+              alt="Indiana Traders Logo"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                filter: [
+                  'drop-shadow(0 0 0px rgba(255,255,255,0))',
+                  'drop-shadow(0 0 8px rgba(212,175,55,0.2))',
+                  'drop-shadow(0 0 0px rgba(255,255,255,0))'
+                ]
+              }}
+              transition={{
+                opacity: { duration: 0.8, ease: 'easeOut' },
+                scale: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
+                filter: { repeat: Infinity, duration: 2.0, ease: 'easeInOut' }
+              }}
+              className="w-[75px] md:w-[85px] lg:w-[100px] h-auto object-contain"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Header />
 
       {/* 1. HERO SECTION */}
