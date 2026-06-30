@@ -467,7 +467,7 @@ export default function Home() {
                 <div className={`lg:col-span-7 bg-white border border-[rgba(1,42,74,0.08)] p-3 transition-all duration-300 hover:-translate-y-[6px] hover:shadow-lg ${
                   idx % 2 === 1 ? 'lg:order-2' : ''
                 }`}>
-                  <div className="overflow-hidden relative group">
+                  <div className="lg:overflow-hidden relative group">
                     <motion.img
                       src={getAssetPath(project.image)}
                       alt={project.name}
@@ -475,7 +475,7 @@ export default function Home() {
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={imageReveal}
-                      className="w-full h-auto lg:h-[400px] object-contain lg:object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      className="w-full h-auto lg:h-[400px] object-contain lg:object-cover transition-transform duration-300 lg:group-hover:scale-[1.02]"
                     />
                   </div>
                 </div>
