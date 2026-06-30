@@ -76,7 +76,7 @@ p, li, .body-text {
 .animate-marquee-ltr {
   display: flex;
   width: max-content;
-  animation: marquee-ltr 22s linear infinite;
+  animation: marquee-ltr 75s linear infinite;
   will-change: transform;
 }
 
