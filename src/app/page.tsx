@@ -526,6 +526,18 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* Social Gradients SVG Definition */}
+      <svg width="0" height="0" className="absolute pointer-events-none w-0 h-0" style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#F58529" />
+            <stop offset="25%" stopColor="#DD2A7B" />
+            <stop offset="65%" stopColor="#8134AF" />
+            <stop offset="100%" stopColor="#515BD4" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       {/* 6. SOCIAL MEDIA SHOWCASE (HIGH PRIORITY) */}
       <motion.section
         initial="hidden"
@@ -548,15 +560,15 @@ export default function Home() {
             {/* Social Channel stats */}
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 pt-6">
               <a href="https://www.instagram.com/indianatraders.kkd/?hl=en" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group">
-                <Instagram size={18} className="text-[#01497C] transition-transform duration-250 group-hover:rotate-[5deg]" />
+                <Instagram size={18} stroke="url(#instagram-gradient)" className="transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:rotate-[5deg]" />
                 <span className="text-xs font-semibold text-[#012A4A]">Instagram</span>
               </a>
               <a href="https://www.youtube.com/@indianatraders1936/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group">
-                <Youtube size={18} className="text-[#01497C] transition-transform duration-250 group-hover:rotate-[5deg]" />
+                <Youtube size={18} className="text-[#FF0000] transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:rotate-[5deg]" />
                 <span className="text-xs font-semibold text-[#012A4A]">YouTube</span>
               </a>
               <a href="https://www.facebook.com/profile.php?id=61590805607966" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group">
-                <Facebook size={18} className="text-[#01497C] transition-transform duration-250 group-hover:rotate-[5deg]" />
+                <Facebook size={18} className="text-[#1877F2] transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:rotate-[5deg]" />
                 <span className="text-xs font-semibold text-[#012A4A]">Facebook</span>
               </a>
             </div>
@@ -585,7 +597,7 @@ export default function Home() {
                       <p className="text-[11px] text-[#9CA3AF] mt-0.5 font-medium">2 weeks ago</p>
                     </div>
                   </div>
-                  <Youtube size={20} className="text-[#9CA3AF] transition-transform duration-250 group-hover:rotate-[5deg]" />
+                  <Youtube size={20} className="text-[#FF0000] transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:rotate-[5deg]" />
                 </div>
                 {/* Simulated Thumbnail */}
                 <div className="relative h-48 bg-[#F9FAFB] overflow-hidden rounded-[16px] mb-6">
@@ -642,7 +654,7 @@ export default function Home() {
                       <p className="text-[11px] text-[#9CA3AF] mt-0.5 font-medium">3 days ago</p>
                     </div>
                   </div>
-                  <Instagram size={20} className="text-[#9CA3AF] transition-transform duration-250 group-hover:rotate-[5deg]" />
+                  <Instagram size={20} stroke="url(#instagram-gradient)" className="transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:rotate-[5deg]" />
                 </div>
                 {/* Simulated Thumbnail */}
                 <div className="relative h-48 bg-[#F9FAFB] overflow-hidden rounded-[16px] mb-6">
@@ -693,7 +705,7 @@ export default function Home() {
                       <p className="text-[11px] text-[#9CA3AF] mt-0.5 font-medium">Yesterday</p>
                     </div>
                   </div>
-                  <Facebook size={20} className="text-[#9CA3AF] transition-transform duration-250 group-hover:rotate-[5deg]" />
+                  <Facebook size={20} className="text-[#1877F2] transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:rotate-[5deg]" />
                 </div>
                 {/* Simulated Thumbnail */}
                 <div className="relative h-48 bg-[#F9FAFB] overflow-hidden rounded-[16px] mb-6">
