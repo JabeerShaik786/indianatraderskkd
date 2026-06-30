@@ -1,5 +1,13 @@
 'use client';
 
+const getAssetPath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const basePath = '/indianatraderskkd';
+  if (path.startsWith(basePath)) return path;
+  return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
+};
+
 import { motion } from 'framer-motion';
 import { Shield, Clock, Phone, Mail, MapPin, ArrowLeft } from 'lucide-react';
 import Header from '@/components/Header';
@@ -187,7 +195,7 @@ export default function PrivacyPolicy() {
           {/* Breadcrumbs / Back button */}
           <div className="mb-10">
             <a 
-              href="/" 
+              href={getAssetPath("/")} 
               className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#01497C] hover:text-[#012A4A] transition-colors font-headings group"
             >
               <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />

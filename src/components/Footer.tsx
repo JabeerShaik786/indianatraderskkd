@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/5">
           {/* Branding Column */}
           <div className="col-span-2 lg:col-span-1 space-y-6">
-            <a href="/#hero" className="flex flex-col w-fit">
+            <a href={getAssetPath("/#hero")} className="flex flex-col w-fit">
               <span className="font-headings text-2xl font-bold tracking-wider text-white">
                 INDIANA TRADERS
               </span>
@@ -99,9 +99,9 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex gap-6">
-            <a href="/#hero" className="text-[#89C2D9] hover:text-white transition-colors duration-300 ease-in-out opacity-100">Back To Top</a>
+            <a href={getAssetPath("/#hero")} className="text-[#89C2D9] hover:text-white transition-colors duration-300 ease-in-out opacity-100">Back To Top</a>
             <span className="text-[#89C2D9] opacity-100">•</span>
-            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#89C2D9] hover:text-white transition-colors duration-300 ease-in-out opacity-100">Privacy Policy</a>
+            <a href={getAssetPath("/privacy-policy/")} target="_blank" rel="noopener noreferrer" className="text-[#89C2D9] hover:text-white transition-colors duration-300 ease-in-out opacity-100">Privacy Policy</a>
           </div>
         </div>
       </div>
