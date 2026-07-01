@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const SOURCE_IMAGE = path.join('C:', 'Users', 'Dell', '.gemini', 'antigravity', 'brain', '677d9dda-7a90-4990-b0a9-051e6d40eb46', 'media__1782845470869.png');
+const SOURCE_IMAGE = path.join(__dirname, '..', 'public', 'images', 'logo.png');
 
 const TARGETS = {
   appFavicon: path.join(__dirname, '..', 'src', 'app', 'favicon.ico'),
@@ -82,6 +82,46 @@ async function main() {
   fs.writeFileSync(TARGETS.appFavicon, icoBuffer);
   fs.writeFileSync(TARGETS.publicFavicon, icoBuffer);
   console.log('Generated app/favicon.ico and public/favicon.ico successfully!');
+
+  // 3. Generate site.webmanifest
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined 
+    ? process.env.NEXT_PUBLIC_BASE_PATH 
+    : '/indianatraderskkd';
+
+  const manifest = {
+    name: "Indiana Traders",
+    short_name: "Indiana Traders",
+    icons: [
+      {
+        src: `${basePath}/favicon-16x16.png`,
+        sizes: "16x16",
+        type: "image/png"
+      },
+      {
+        src: `${basePath}/favicon-32x32.png`,
+        sizes: "32x32",
+        type: "image/png"
+      },
+      {
+        src: `${basePath}/apple-touch-icon.png`,
+        sizes: "180x180",
+        type: "image/png"
+      },
+      {
+        src: `${basePath}/icon-512x512.png`,
+        sizes: "512x512",
+        type: "image/png"
+      }
+    ],
+    theme_color: "#082B4A",
+    background_color: "#082B4A",
+    display: "standalone",
+    start_url: `${basePath}/`
+  };
+
+  const manifestPath = path.join(__dirname, '..', 'public', 'site.webmanifest');
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+  console.log('Generated public/site.webmanifest successfully!');
 }
 
 main().catch(err => {
