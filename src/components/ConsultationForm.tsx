@@ -365,9 +365,15 @@ export default function ConsultationForm() {
         <button
           type="button"
           onClick={handleWhatsAppConsult}
-          className="w-full flex items-center justify-center gap-2 px-6 py-4 border-2 border-[#22C55E] text-[#22C55E] hover:bg-[#22C55E] hover:text-white hover:-translate-y-[2px] hover:shadow-md active:scale-[0.98] transition-all duration-150 text-[16px] font-semibold tracking-[0.02em] font-headings"
+          className="w-full flex items-center justify-center gap-3 px-6 py-4 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366]/8 hover:border-[#128C7E] hover:text-[#128C7E] hover:-translate-y-[2px] hover:shadow-md active:scale-[0.98] transition-all duration-150 text-[16px] font-semibold tracking-[0.02em] font-headings"
         >
-          <MessageSquare size={14} />
+          <svg
+            viewBox="0 0 24 24"
+            className="w-[20px] h-[20px] md:w-[22px] md:h-[22px] shrink-0 transition-transform duration-150"
+            fill="#25D366"
+          >
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.637-1.03-5.114-2.905-6.99S14.64 1.252 12.008 1.252c-5.441 0-9.866 4.42-9.869 9.866-.001 1.77.463 3.498 1.345 5.021l-.98 3.586 3.673-.963zm10.702-6.559c-.299-.15-1.77-.874-2.043-.973-.274-.099-.474-.149-.673.15-.198.298-.77.973-.943 1.171-.173.199-.347.223-.646.074-.299-.15-1.265-.466-2.41-1.484-.89-.793-1.49-1.772-1.664-2.07-.173-.299-.018-.46.131-.609.135-.133.298-.347.447-.521.15-.173.199-.298.298-.497.1-.198.05-.371-.025-.521-.075-.15-.673-1.62-.922-2.206-.24-.58-.485-.5-.673-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.77-.724 2.02-1.424.248-.699.248-1.299.173-1.424-.075-.124-.272-.198-.57-.347z" />
+          </svg>
           <span>WhatsApp Consultation</span>
         </button>
       </div>
